@@ -1,0 +1,87 @@
+<!--NIM     : 10122465-->
+<!--NAMA    : Aris Marcel Luis-->
+<!--KELAS   : IF-12-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valorant</title>
+    <link rel="icon" href="/assets/image/tittle-icon.png">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+    
+    <div id="navigasi">
+        <div id="header">
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="pages/agents.html">Agents</a></li>
+            <li><a href="pages/maps-strategy.html">Maps Strategy</a></li>
+          </ul>
+        </div>
+    </div>
+
+    <div class="background">
+        <video autoplay muted loop id="myVideo">
+            <source src="assets/video/agent-background-generic.mp4" type="video/mp4" />
+        </video>
+    </div>
+
+    <div class="background-logo">
+        <div class="first"></div>
+        <div class="second"></div>
+    </div>
+    
+    <div class="konten">
+            <div class="container">
+                <div class="box">
+                    <div class="title">
+                        <span class="block"></span>
+                        <h1>Valorant<span></span></h1>
+                    </div>
+                </div>
+                <p class="SText">A <span> - 5v5 - </span> First Person Shooter Tactical Game</p>
+                <a href="https://playvalorant.com/">
+                    <button class="btn btn--light">
+                        <span class="btn__inner">
+                        <span class="btn__slide"></span>
+                        <span class="btn__content">Play Valorant</span>
+                        </span>
+                    </button>      
+                </a>
+            </div>
+
+            <div class="imgBox">
+                <div class="img" id="yoru-img">
+    
+                </div>
+            </div>
+
+            <div class="square"></div>
+        </div>
+    </div>
+
+    <!-- Scroll Reveal -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <script src="assets/js/landing-page.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script>
+        $.ajax({
+            type: "get",
+            url: "https://valorant-api.com/v1/agents/7f94d92c-4234-0a36-9646-3a87eb8b5c89",
+            dataType: "json",
+            success: function (response) {
+                console.log(response.data);
+                $("#yoru-img").html(`<img src="${response.data.fullPortrait}" alt="yoru" class="img" />`);
+            }
+        });
+    </script>
+</body>
+
+</html>

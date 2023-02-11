@@ -1,0 +1,277 @@
+<!--NIM     : 10122465-->
+<!--NAMA    : Aris Marcel Luis-->
+<!--KELAS   : IF-12-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valorant</title>
+    <link rel="icon" href="../../assets/image/tittle-icon.png">
+    <link rel="stylesheet" href="../../assets/css/maps-strategy.css">
+</head>
+<body>
+    
+    <div id="navigasi">
+        <div id="header">
+          <ul>
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../agents.html">Agents</a></li>
+            <li><a href="../maps-strategy.html">Maps Strategy</a></li>
+          </ul>
+        </div>
+    </div>
+
+    <section class="header">
+        <div class="map" id="map">
+        
+        </div>
+        <div class="container">
+            <div class="box">
+                <div class="title">
+                    <span class="block"></span>
+                    <h1 id="map_name"></h1>
+                </div>
+            </div>
+        </div>
+        <div class="coordinates-container">
+            <h1 id="coordinates"></h1>
+        </div>
+    </section>
+
+    <section class="compotition-container">
+		<h1 style="font-size: 60px; text-align: center;">BEST AGENTS COMPOTITION</h1>
+		<div class="agents-img-container">
+			<div class="agents-img1" id="agents-img1"></div>
+			<div class="agents-img2" id="agents-img2"></div>
+			<div class="agents-img3" id="agents-img3"></div>
+			<div class="agents-img4" id="agents-img4"></div>
+			<div class="agents-img5" id="agents-img5"></div>
+		</div>
+	</section>
+
+    <div class="description-container">
+        <div class="pro-teams-reference">
+            <h1>PRO TEAMS REFERENCES</h1>
+            <ul>
+                <li><a href="https://www.youtube.com/watch?v=D142EygL_dk">Loud Vs Leviatan</a></li>
+            </ul>
+        </div>
+
+        <div class="agent-breakdown-container">
+            <h1>AGENT BREAKDOWN</h1>
+            <div class="agent-breakdown1">
+                <div class="agents-breakdown-img1" id="agents-breakdown-img1"></div>
+                <div class="description">
+                    <h2>Sova</h2>
+                    <p>Sova’s Owl Drone gets a ton of value on offense to clear out the many angles for defenders to hide in B Main and A Site. This is because there are so many positions for defenders to play at various elevations which the drone is better for clearing out. On defense Sova’s Recon Bolt is great for checking for early pushes to A Belt and mid.</p>
+                </div>
+            </div>
+            <div class="agent-breakdown2">
+                <div class="agents-breakdown-img2" id="agents-breakdown-img2"></div>
+                <div class="description">
+                    <h2>Chamber</h2>
+                    <p>Chamber’s Rendezvous lets him take advantage of a lot of angles to Op from. Don’t be afraid to get aggressive and use elevated angles. Many players only Op on A rafters or behind B Yellow. Chamber can get in front of A pipes or under B Green to get quick kills from unexpected angles and get out. His Trademark is great for using in Kitchen and Orange to detect when enemies lurk through mid.
+                    </p>
+                </div>
+            </div>
+            <div class="agent-breakdown3">
+                <div class="agents-breakdown-img3" id="agents-breakdown-img3"></div>
+                <div class="description">
+                    <h2>Sage</h2>
+                    <p>Sage’s Barrier Orb is almost a necessity to get down a spike plant. Taking ground to the back site on both A and B is very difficult to do, and her Barrier Orb allows you to plant front site with more protection. Barrier Orb is even fantastic for retakes on defense as teams will typically plant front site and play back in post-plant. Her Slow Orb is good for stalling pushes and throwing at common post-plant positions such as behind B Yellow.</p>
+                </div>
+            </div>
+            <div class="agent-breakdown4">
+                <div class="agents-breakdown-img4" id="agents-breakdown-img4"></div>
+                <div class="description">
+                    <h2>Viper</h2>
+                    <p>Viper’s Poison Cloud is a fantastic way to lurk mid by throwing in mid to the right of where players can go under Tube. This allows players to lurk into Kitchen or Orange with a defensive player on Boiler not seeing them. Poison Cloud is great for setting up one ways on defense on 410 at A site or on the edge of Green Box B Main. Toxic Screen is a great way to gain ground on B site and to block Screens on A Site. Use Toxic Screen defensively by placing it across 410 from mid and through B Main to make clearing angles for offensive players more difficult.</p>
+                </div>
+            </div>
+            <div class="agent-breakdown5">
+                <div class="agents-breakdown-img5" id="agents-breakdown-img5"></div>
+                <div class="description">
+                    <h2>KAY/O</h2>
+                    <p>KAY/O’s Zero/Point is great for clearing out close angles, especially if a Chamber is playing there, forcing him to use Rendezvous. Learning basic Frag/Ment lineups to stall a plant is a great use because it will damage a planter through a Sage wall which is a very common way to plant on Icebox.</p>
+                </div>
+            </div>
+        </div>
+        <div class="defender_position">
+            <h1>DEFENDER POSITION</h1>
+            <img src="../../assets/image/defender_position/icebox.png" alt="">
+        </div>
+    </div>
+  
+    <div class="scrollMaps_h1">
+        <h1>OTHER MAPS</h1>
+    </div>
+    <div class="scrollMaps_Detail">
+        <div class="maps" id="maps1"></div>
+        <div class="maps" id="maps2"></div>
+        <div class="maps" id="maps3"></div>
+        <div class="maps" id="maps4"></div>
+        <div class="maps" id="maps5"></div>
+        <div class="maps" id="maps6"></div>
+        <div class="maps" id="maps7"></div>
+    </div>
+
+    <script src="../../assets/js/maps-strategy.js"></script>
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script>
+        // FRACTURE MAP
+        let id = location.search.split('id=')[1];
+        $.ajax({
+            type: "get",
+            url: `https://valorant-api.com/v1/maps/${id}`,
+            dataType: "json",
+            success: function (response) {
+                console.log(response.data);
+                $("#map").html(`<img src="${response.data.splash}" style="width: 100%; height: 650px;"/>`);
+                $("#coordinates").text(response.data.coordinates);
+                $("#map_name").html(response.data.displayName);
+            }
+        });
+
+		$.ajax({
+			type: "get",
+			url: "https://valorant-api.com/v1/agents/",
+			dataType: "json",
+			success: function (response) {
+				console.log(response.data);
+				$("#agents-img1")
+			}
+		});
+
+        // AGENT BREAKDOWN
+		$.ajax({
+			type: "get",
+			url: "https://valorant-api.com/v1/agents/320b2a48-4d9b-a075-30f1-1f93a9b638fa",
+			dataType: "json",
+			success: function (response) {
+				console.log(response.data);
+				$("#agents-img1").html(`<img src="${response.data.fullPortrait}" style="width: 500px;"/>`)
+                $("#agents-breakdown-img1").html(`<img src="${response.data.fullPortrait}" style="width: 500px;"/>`)
+			}
+		});
+
+        $.ajax({
+			type: "get",
+			url: "https://valorant-api.com/v1/agents/22697a3d-45bf-8dd7-4fec-84a9e28c69d7",
+			dataType: "json",
+			success: function (response) {
+				console.log(response.data);
+				$("#agents-img2").html(`<img src="${response.data.fullPortrait}" style="width: 550px;"/>`)
+                $("#agents-breakdown-img2").html(`<img src="${response.data.fullPortrait}" style="width: 500px;"/>`)
+			}
+		});
+
+        $.ajax({
+			type: "get",
+			url: "https://valorant-api.com/v1/agents/569fdd95-4d10-43ab-ca70-79becc718b46",
+			dataType: "json",
+			success: function (response) {
+				console.log(response.data);
+				$("#agents-img3").html(`<img src="${response.data.fullPortrait}" style="width: 600px;"/>`)
+                $("#agents-breakdown-img3").html(`<img src="${response.data.fullPortrait}" style="width: 500px;"/>`)
+			}
+		});
+
+        $.ajax({
+			type: "get",
+			url: "https://valorant-api.com/v1/agents/707eab51-4836-f488-046a-cda6bf494859",
+			dataType: "json",
+			success: function (response) {
+				console.log(response.data);
+				$("#agents-img4").html(`<img src="${response.data.fullPortrait}" style="width: 550px;"/>`)
+                $("#agents-breakdown-img4").html(`<img src="${response.data.fullPortrait}" style="width: 500px;"/>`)
+			}
+		});
+
+        $.ajax({
+			type: "get",
+			url: "https://valorant-api.com/v1/agents/601dbbe7-43ce-be57-2a40-4abd24953621",
+			dataType: "json",
+			success: function (response) {
+				console.log(response.data);
+				$("#agents-img5").html(`<img src="${response.data.fullPortrait}" style="width: 500px;"/>`)
+                $("#agents-breakdown-img5").html(`<img src="${response.data.fullPortrait}" style="width: 500px;"/>`)
+			}
+		});
+
+        // OTHER MAPS
+        $.ajax({
+            type: "get",
+            url: "https://valorant-api.com/v1/maps/7eaecc1b-4337-bbf6-6ab9-04b8f06b3319",
+            dataType: "json",
+            success: function (response) {
+            console.log(response.data)
+            $("#maps1").html(`<a href="map_ascent.html?id=${response.data.uuid}" class="maps"><img src="${response.data.splash}" style="width: 500px;" /> </a>`);
+            }
+        });
+
+        $.ajax({
+            type: "get",
+            url: "https://valorant-api.com/v1/maps/b529448b-4d60-346e-e89e-00a4c527a405",
+            dataType: "json",
+            success: function (response) {
+            console.log(response.data)
+            $("#maps2").html(`<a href="map_fracture.html?id=${response.data.uuid}" class="maps"><img src="${response.data.splash}" style="width: 500px;" /> </a>`);
+            }
+        });
+
+        $.ajax({
+            type: "get",
+            url: "https://valorant-api.com/v1/maps/fd267378-4d1d-484f-ff52-77821ed10dc2",
+            dataType: "json",
+            success: function (response) {
+            console.log(response.data)
+            $("#maps3").html(`<a href="map_pearl.html?id=${response.data.uuid}" class="maps"><img src="${response.data.splash}" style="width: 500px;" /> </a>`);
+            }
+        });
+
+        $.ajax({
+            type: "get",
+            url: "https://valorant-api.com/v1/maps/2bee0dc9-4ffe-519b-1cbd-7fbe763a6047",
+            dataType: "json",
+            success: function (response) {
+            console.log(response.data)
+            $("#maps4").html(`<a href="map_haven.html?id=${response.data.uuid}" class="maps"><img src="${response.data.splash}" style="width: 500px;" /> </a>`);
+            }
+        });
+
+        $.ajax({
+            type: "get",
+            url: "https://valorant-api.com/v1/maps/2c9d57ec-4431-9c5e-2939-8f9ef6dd5cba",
+            dataType: "json",
+            success: function (response) {
+            console.log(response.data)
+            $("#maps5").html(`<a href="map_bind.html?id=${response.data.uuid}" class="maps"><img src="${response.data.splash}" style="width: 500px;" /> </a>`);
+            }
+        });
+
+        $.ajax({
+            type: "get",
+            url: "https://valorant-api.com/v1/maps/2fb9a4fd-47b8-4e7d-a969-74b4046ebd53",
+            dataType: "json",
+            success: function (response) {
+            console.log(response.data)
+            $("#maps6").html(`<a href="map_breeze.html?id=${response.data.uuid}" class="maps"><img src="${response.data.splash}" style="width: 500px;" /> </a>`);
+            }
+        });
+
+        $.ajax({
+            type: "get",
+            url: "https://valorant-api.com/v1/maps/e2ad5c54-4114-a870-9641-8ea21279579a",
+            dataType: "json",
+            success: function (response) {
+            console.log(response.data)
+            $("#maps7").html(`<a href="map_icebox.html?id=${response.data.uuid}" class="maps"><img src="${response.data.splash}" style="width: 500px;" /> </a>`);
+            }
+        });
+    </script>
+</body>
+</html>

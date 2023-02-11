@@ -1,0 +1,79 @@
+<!--NIM     : 10122465-->
+<!--NAMA    : Aris Marcel Luis-->
+<!--KELAS   : IF-12-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <title>Valorant</title>
+    <link rel="icon" href="../assets/image/tittle-icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/v4-shims.css" />
+    <link rel="stylesheet" href="../assets/css/agents.css" />
+  </head>
+  <body style="overflow-y: hidden;">
+
+    <!--NAVBAR-->
+    <div id="navigasi" style="position: relative;">
+      <div id="header">
+        <ul>
+          <li><a href="../index.html" style="color: #000;">Home</a></li>
+          <li><a href="#"  style="color: #000;">Agents</a></li>
+          <li><a href="maps-strategy.html"  style="color: #000;">Maps Strategy</a></li>
+        </ul>
+      </div>
+    </div>
+    <!--End Of NAVBAR-->
+
+    <!-- OTHER AGENTS -->
+    <section class="other-agents">
+      <div class="agents-container" id="dataagent" style="display: block;">
+        
+      </div>
+    </section>
+    <!-- END OF OTHER AGENTS -->
+
+    <!-- Scroll Reveal -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <!-- My JS -->
+    <script src="../assets/js/agents.mjs"></script>
+    <!-- <script>
+      function skillBtn(n) {
+        skillRadio[n].checked = true;
+        if (skillRadio[n].checked == true) {
+          addBtn0(n);
+          abilitiesTextHead.innerHTML = abilities[0][n]["skill"];
+          abilitiesTextBody.innerHTML = abilities[0][n]["desc"];
+          abilitiesSrc.classList.add("show");
+          abilitiesSrc.src = abilities[0][n]["video"];
+        }
+      }
+    </script> -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script>
+      $.ajax({
+        type: "get",
+        url: "https://valorant-api.com/v1/agents",
+        data: {isPlayableCharacter: true},
+        dataType: "json",
+        success: function (response) {
+          console.log(response.data);
+          let dataagent = [];
+          response.data.forEach(element => {
+            dataagent += `<a href="agents_detail.html?id=${element.uuid}" class="agent"><img src="${element.displayIconSmall}" alt="" style="width: 160px; height: 160px;" /></a>`;
+          });
+          $("#dataagent").html(dataagent);
+
+        }
+      });
+    </script>
+
+
+  </body>
+</html>

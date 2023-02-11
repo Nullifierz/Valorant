@@ -1,0 +1,156 @@
+<!--NIM     : 10122465-->
+<!--NAMA    : Aris Marcel Luis-->
+<!--KELAS   : IF-12-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+	<title>Valorant</title>
+    <link rel="icon" href="../assets/image/tittle-icon.png">
+	<link rel="icon" href="./img/logo.png" type="image/x-icon" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/v4-shims.css" />
+	<link rel="stylesheet" href="../assets/css/agents.css" />
+</head>
+
+<body>
+	<!-- NAVBAR -->
+	<div id="navigasi">
+		<div id="header">
+			<ul>
+				<li><a href="../index.html">Home</a></li>
+				<li><a href="agents.html">Agents</a></li>
+				<li><a href="maps-strategy.html">Maps Strategy</a></li>
+			</ul>
+		</div>
+	</div>
+	<!-- END OF NAVBAR -->
+
+	<!-- HEADER -->
+	<header>
+		<video autoplay muted loop id="myVideo">
+			<source src="../assets/video/agent-background-generic.mp4" type="video/mp4" />
+		</video>
+		<div class="sova-img-container" id="sova-img">
+
+		</div>
+		<div class="header-text-container">
+			<h1 id="agent-name"></h1>
+			<div class="desc-container">
+				<div id="role-img">
+				</div>
+				<h2 id="role"></h2>
+				<p id="description"></p>
+			</div>
+		</div>
+	</header>
+	<!-- END OF HEADER -->
+
+	<!-- SKILL -->
+	<section class="skill-container" id="skill">
+		<h1 style="font-size: 60px; text-align: center;">SPECIAL ABILITIES</h1>
+		<div class="abilities-container">
+			<div class="abilities-button-text">
+				<div class="abilities-button">
+					<span id="dt_abilities"></span>
+				</div>
+				<br>
+				<div class="abilities-text" style="text-align: center;" data-sr-id="9" style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 2s cubic-bezier(0.5, 0, 0, 1) 0s, transform 2s cubic-bezier(0.5, 0, 0, 1) 0s;">
+					<h2 id="abilities_text_head">Choose ability by pressing a button above</h2>
+					<br>
+					<p id="detail_abilities_text">
+					</p>
+				</div>
+				<br>
+			</div>
+		</div>
+		<br />
+		</div>
+		</div>
+	</section>
+	<br /><br /><br /><br /><br />
+	<!-- END OF SKILL -->
+
+	<!-- OTHER AGENTS -->
+	<section class="other-agents">
+		<h1>OTHER AGENTS</h1>
+		<div class="agents-container" id="dataagent" style="display: block;">
+		</div>
+	</section>
+	<!-- END OF OTHER AGENTS -->
+
+	<footer>
+	</footer>
+
+	<!-- Scroll Reveal -->
+	<script src="https://unpkg.com/scrollreveal"></script>
+
+	<!-- My JS -->
+	<script src="../assets/js/agents.mjs"></script>
+
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+	<script>
+		let id = location.search.split('id=')[1];
+		$.ajax({
+			type: "get",
+			url: `https://valorant-api.com/v1/agents/${id}`,
+			dataType: "json",
+			success: function (response) {
+				// console.log(response.data);
+				$("#agent-name").text(response.data.displayName);
+				$("#description").text(response.data.description);
+				$("#role").text(response.data.role.displayName);
+				$("#role-img").html(`<img src="${response.data.role.displayIcon}" style="width:100px;"/>`)
+				$("#sova-img").html(
+					`<img src="${response.data.fullPortrait}" alt="sova-img" style="height: 896px; top: -75px;" class="sova-img" />`
+				);
+				let dt_abilities = [];
+				let abilities_text_head = [];
+				let detail_abilities_text = [];
+				response.data.abilities.forEach((el, index) => {
+					dt_abilities += `
+					<input type="hidden" id="details_desc_${index}" value="${el.description}">
+					<button class="abilities-ico" id="details_ability_${index}" style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: all 0.5s ease-in-out 0s, opacity 2s cubic-bezier(0.5, 0, 0, 1) 0s, transform 2s cubic-bezier(0.5, 0, 0, 1) 0s;">
+				 		<img src="${el.displayIcon}" alt="">
+					</button>
+					`;
+					$(document).on("click", `#details_ability_${index}`, function () {
+						let value_desc = $(`#details_desc_${index}`).val();
+						$('#detail_abilities_text').text(value_desc);
+					});
+
+					$(document).on("click", `#details_ability_${index}`, function () {
+						$("#abilities_text_head").text(el.displayName);
+					})
+				});
+				$("#dt_abilities").html(dt_abilities);
+			}
+		});
+
+		$.ajax({
+			type: "get",
+			url: "https://valorant-api.com/v1/agents/",
+			data: {
+				isPlayableCharacter: true
+			},
+			dataType: "json",
+			success: function (response) {
+				let dataagent = [];
+				response.data.forEach(element => {
+					dataagent +=
+						`<a href="agents_detail.html?id=${element.uuid}" class="agent"><img src="${element.displayIconSmall}" alt="" style="width: 160px; height: 160px;" /></a>`;
+				});
+				$("#dataagent").html(dataagent);
+			}
+		});
+	</script>
+	
+</body>
+
+</html>

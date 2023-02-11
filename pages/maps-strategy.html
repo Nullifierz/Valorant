@@ -1,0 +1,112 @@
+<!--NIM     : 10122465-->
+<!--NAMA    : Aris Marcel Luis-->
+<!--KELAS   : IF-12-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valorant</title>
+    <link rel="icon" href="../assets/image/tittle-icon.png">
+    <link rel="stylesheet" href="../assets/css/maps-strategy.css">
+</head>
+<body>
+
+  <div id="navigasi">
+    <div id="header">
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="agents.html">Agents</a></li>
+        <li><a href="#">Maps Strategy</a></li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="scrollMaps">
+    <div class="maps" id="maps1"></div>
+    <div class="maps" id="maps2"></div>
+    <div class="maps" id="maps3"></div>
+    <div class="maps" id="maps4"></div>
+    <div class="maps" id="maps5"></div>
+    <div class="maps" id="maps6"></div>
+    <div class="maps" id="maps7"></div>
+  </div>
+    
+    <script src="../assets/js/maps-strategy.js"></script>
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script>
+      $.ajax({
+        type: "get",
+        url: "https://valorant-api.com/v1/maps/7eaecc1b-4337-bbf6-6ab9-04b8f06b3319",
+        dataType: "json",
+        success: function (response) {
+          console.log(response.data)
+          $("#maps1").html(`<a href="map-pages/map_ascent.html?id=${response.data.uuid}" class="maps"><img src="${response.data.splash}" style="width: 500px;" /> </a>`);
+        }
+      });
+
+      $.ajax({
+        type: "get",
+        url: "https://valorant-api.com/v1/maps/b529448b-4d60-346e-e89e-00a4c527a405",
+        dataType: "json",
+        success: function (response) {
+          console.log(response.data)
+          $("#maps2").html(`<a href="map-pages/map_fracture.html?id=${response.data.uuid}" class="maps"><img src="${response.data.splash}" style="width: 500px;" /> </a>`);
+        }
+      });
+
+      $.ajax({
+        type: "get",
+        url: "https://valorant-api.com/v1/maps/fd267378-4d1d-484f-ff52-77821ed10dc2",
+        dataType: "json",
+        success: function (response) {
+          console.log(response.data)
+          $("#maps3").html(`<a href="map-pages/map_pearl.html?id=${response.data.uuid}" class="maps"><img src="${response.data.splash}" style="width: 500px;" /> </a>`);
+        }
+      });
+
+      $.ajax({
+        type: "get",
+        url: "https://valorant-api.com/v1/maps/2bee0dc9-4ffe-519b-1cbd-7fbe763a6047",
+        dataType: "json",
+        success: function (response) {
+          console.log(response.data)
+          $("#maps4").html(`<a href="map-pages/map_haven.html?id=${response.data.uuid}" class="maps"><img src="${response.data.splash}" style="width: 500px;" /> </a>`);
+        }
+      });
+
+      $.ajax({
+        type: "get",
+        url: "https://valorant-api.com/v1/maps/2c9d57ec-4431-9c5e-2939-8f9ef6dd5cba",
+        dataType: "json",
+        success: function (response) {
+          console.log(response.data)
+          $("#maps5").html(`<a href="map-pages/map_bind.html?id=${response.data.uuid}" class="maps"><img src="${response.data.splash}" style="width: 500px;" /> </a>`);
+        }
+      });
+
+      $.ajax({
+        type: "get",
+        url: "https://valorant-api.com/v1/maps/2fb9a4fd-47b8-4e7d-a969-74b4046ebd53",
+        dataType: "json",
+        success: function (response) {
+          console.log(response.data)
+          $("#maps6").html(`<a href="map-pages/map_breeze.html?id=${response.data.uuid}" class="maps"><img src="${response.data.splash}" style="width: 500px;" /> </a>`);
+        }
+      });
+
+      $.ajax({
+        type: "get",
+        url: "https://valorant-api.com/v1/maps/e2ad5c54-4114-a870-9641-8ea21279579a",
+        dataType: "json",
+        success: function (response) {
+          console.log(response.data)
+          $("#maps7").html(`<a href="map-pages/map_icebox.html?id=${response.data.uuid}" class="maps"><img src="${response.data.splash}" style="width: 500px;" /> </a>`);
+        }
+      });
+    </script>
+</body>
+</html>
